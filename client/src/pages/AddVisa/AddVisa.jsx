@@ -84,6 +84,8 @@ const AddVisa = () => {
                         <option value="Tourist Visa">Tourist Visa</option>
                         <option value="Student Visa">Student Visa</option>
                         <option value="Official Visa">Official Visa</option>
+                        <option value="Business Visa">Business Visa</option>
+                        <option value="Medical Visa">Medical Visa</option>
                     </select>
                     <input
                         type="text"
@@ -136,7 +138,7 @@ const AddVisa = () => {
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                     <input
-                        type="number"
+                        type="text"
                         name="validity"
                         value={formData.validity}
                         onChange={handleChange}

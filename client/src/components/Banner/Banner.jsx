@@ -66,8 +66,6 @@ const Banner = () => {
 
   return (
     <div className="w-full flex justify-center items-center mx-auto bg-cover bg-center bg-no-repeat h-[70vh] md:h-[80vh]">
-
-      
       {/* React Responsive Carousel */}
       <Carousel
         autoPlay

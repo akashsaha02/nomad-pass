@@ -68,67 +68,58 @@ const MyAddedVisas = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-5">
-      <h2 className="text-2xl font-bold text-center">My Added Visas</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {visas.map((visa) => (
-          <div
-            key={visa._id}
-            className="border border-gray-300 rounded-lg shadow-md p-4 bg-white"
-          >
-            <img
-              src={visa.image}
-              alt={`${visa.country} flag`}
-              className="w-full h-48 object-cover rounded-md"
-            />
-            <h3 className="mt-3 text-lg font-semibold">{visa.country}</h3>
-            <p>
-              <strong>Visa Type:</strong> {visa.visaType}
-            </p>
-            <p>
-              <strong>Processing Time:</strong> {visa.processingTime}
-            </p>
-            <p>
-              <strong>Fee:</strong> {visa.fee}
-            </p>
-            <p>
-              <strong>Validity:</strong> {visa.validity}
-            </p>
-            <p>
-              <strong>Application Method:</strong> {visa.applicationMethod}
-            </p>
-            <div className="mt-4 flex space-x-2">
-              <button
-                onClick={() => handleUpdate(visa)}
-                className="btn btn-primary btn-sm"
-              >
-                Update
-              </button>
-              <button
-                onClick={() => handleDelete(visa._id)}
-                className="btn btn-error btn-sm"
-              >
-                Delete
-              </button>
+    <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl font-bold text-center">My Added Visas</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          {visas.map((visa) => (
+            <div
+              key={visa._id}
+              className="border border-gray-300 rounded-lg shadow-md p-4 bg-white"
+            >
+              <img
+                src={visa.countryImage}
+                alt={`${visa.countryName} flag`}
+                className="w-full h-48 object-cover rounded-md"
+              />
+              <h3 className="mt-3 text-lg font-semibold">{visa.countryName}</h3>
+              <p>
+                <strong>Visa Type:</strong> {visa.visaType}
+              </p>
+             
+              <div className="mt-4 flex space-x-2">
+                <button
+                  onClick={() => handleUpdate(visa)}
+                  className="btn btn-primary btn-sm"
+                >
+                  Update
+                </button>
+                <button
+                  onClick={() => handleDelete(visa._id)}
+                  className="btn btn-error btn-sm"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Daisy UI Modal */}
-      <input type="checkbox" id="update-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Update Visa</h3>
-          {selectedVisa && (
-            <UpdateForm
-              visa={selectedVisa}
-              onClose={() =>
-                (document.getElementById("update-modal").checked = false)
-              }
-              onSubmit={handleModalSubmit}
-            />
-          )}
+        {/* Daisy UI Modal */}
+        <input type="checkbox" id="update-modal" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Update Visa</h3>
+            {selectedVisa && (
+              <UpdateForm
+                visa={selectedVisa}
+                onClose={() =>
+                  (document.getElementById("update-modal").checked = false)
+                }
+                onSubmit={handleModalSubmit}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -172,6 +163,8 @@ const UpdateForm = ({ visa, onClose, onSubmit }) => {
         <option value="Tourist Visa">Tourist Visa</option>
         <option value="Student Visa">Student Visa</option>
         <option value="Official Visa">Official Visa</option>
+        <option value="Business Visa">Business Visa</option>
+        <option value="Medical Visa">Medical Visa</option>
       </select>
       <input
         type="text"
@@ -206,6 +199,15 @@ const UpdateForm = ({ visa, onClose, onSubmit }) => {
         value={formData.applicationMethod}
         onChange={handleChange}
         placeholder="Application Method"
+        className="input input-bordered w-full"
+        required
+      />
+      <input
+        type="url"
+        name="countryImage"
+        value={formData.countryImage}
+        onChange={handleChange}
+        placeholder="Image URL"
         className="input input-bordered w-full"
         required
       />
