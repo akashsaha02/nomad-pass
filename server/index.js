@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ad1l6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = process.env.MONGODB_URI;
 
 // console.log(uri);
 
@@ -110,11 +110,6 @@ async function run() {
 run().catch(console.dir);
 
 
-
-app.get('/', (req, res) => {
-  res.send('Sunflower server side')
-})
-
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
+  console.log(`Server is running on port ${ port }`)
 })

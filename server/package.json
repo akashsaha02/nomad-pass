@@ -1,5 +1,5 @@
 {
-  "name": "sunflower_server_side",
+  "name": "nomad-pass-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
